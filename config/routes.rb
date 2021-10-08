@@ -13,4 +13,8 @@ Rails.application.routes.draw do
     delete 'tasks/:id'                => 'tasks#destroy'
   end
 
+  root 'static_pages#index'
+  
+  # Redirect all other paths to index page
+  get '*path'    => 'static_pages#index'
 end
