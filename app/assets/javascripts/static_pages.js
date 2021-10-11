@@ -87,12 +87,62 @@ $(document).ready(() => {
     delBtn.removeClass('show')
   })
 
-  // prevent page refresh when hitting 'enter' in input
+  // prevent page refresh when hitting 'enter' in input -------------------------------------
   let input = document.querySelector('#todo-input')
   input.addEventListener('keydown', (e) => {
     if(e.key == 'Enter') {
       e.preventDefault()
     }
+  })
+
+  // filter list buttons -------------------------------------
+
+  function updateActiveButton(el) {
+    $('.btn-group button').each(function() {
+      $(this).removeClass('active')
+    })
+    $(el).addClass('active')
+  }
+
+  function showActive() {
+    $('#tasks').find('div').each(function() {
+      if($(this).hasClass('complete')) {
+        $(this).addClass('hide')
+      } else {
+        $(this).removeClass('hide')
+      }
+    })
+    updateActiveButton('#active')
+  }
+
+  $('#active').on('click', function() {
+    showActive()
+  })
+
+  function showComplete() {
+    $('#tasks').find('div').each(function() {
+      if($(this).hasClass('complete')) {
+        $(this).removeClass('hide')
+      } else {
+        $(this).addClass('hide')
+      }
+    })
+    updateActiveButton('#complete')
+  }
+
+  $('#complete').on('click', function() {
+    showComplete()
+  })
+  
+  function showAll() {
+    $('#tasks').find('div').each(function() {
+      $(this).removeClass('hide')
+    })
+    updateActiveButton('#all')
+  }
+
+  $('#all').on('click', function() {
+    showAll()
   })
 
   

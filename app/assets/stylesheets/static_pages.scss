@@ -10,6 +10,7 @@
 }
 #tasks {
   border: 1px dashed green;
+  margin-bottom: 5px;
 
   .form-check {
     margin: 10px;
@@ -27,5 +28,8 @@
     color: greens;
   }
 
+  .hide {
+    display: none;
+  }
   
 }
